@@ -1,12 +1,12 @@
 # -*- coding: utf-8 -*-
 """
-flaskext.markdown
+flask_markdown.markdown
 ~~~~~~~~~~~~~~~~~
 
 Markdown filter class for Flask
 To use::
 
-    from flaskext.markdown import Markdown
+    from flask_markdown.markdown import Markdown
     md = Markdown(app)
 
 Then in your template::
@@ -112,7 +112,7 @@ class Markdown(object):
         or define it in the same file you instantiate Markdown.
         To register a simple extension you could do::
 
-          from flaskext.markdown import Extension, Markdown
+          from flask_markdown.markdown import Extension, Markdown
           from preprocessors import SimplePreprocessor
           markdown_instance = Markdown(app)
 
