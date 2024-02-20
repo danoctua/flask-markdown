@@ -29,8 +29,7 @@ decorating the extension class with :func:`extend`
 :license: BSD, MIT see LICENSE for more details.
 """
 from __future__ import absolute_import
-from flask import Markup
-from jinja2 import evalcontextfilter, escape
+from jinja2 import pass_eval_context
 import markdown as md
 from markdown import (
     blockprocessors,
@@ -40,6 +39,8 @@ from markdown import (
 
 
 __all__ = ['blockprocessors', 'Extension', 'Markdown', 'preprocessors']
+
+from markupsafe import Markup, escape
 
 
 class Markdown(object):
@@ -86,7 +87,7 @@ class Markdown(object):
         return Markup(self._instance.convert(stream))
 
     def __build_filter(self, app_auto_escape):
-        @evalcontextfilter
+        @pass_eval_context
         def markdown_filter(eval_ctx, stream):
             """
             Called by Jinja2 when evaluating the Markdown filter. Utilizes the
